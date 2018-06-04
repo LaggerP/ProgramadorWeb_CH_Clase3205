@@ -1,6 +1,12 @@
 function sumaNumeros(numero, numero2){
     var suma = numero + numero2;
     console.log("La suma entre " + numero + " y " + numero2 + " es igual a " +suma);
+    /**
+     * 
+     * OTRA MANERA DE HACERLO
+     */
+
+    alert("La suma entre " + numero + " y " + numero2 + " es igual a " + suma);
 }
 
 function restaNumeros(numero, numero2){
