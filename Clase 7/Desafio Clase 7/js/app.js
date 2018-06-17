@@ -57,7 +57,7 @@ function eliminarPelicula(){
 
 function mostrarPeliculas(_pelicula, _id, _descripcion, _imgPelicula){
     var ul = document.createElement("ul");
-    var li = crear_li_tag(_pelicula, _id, _descripcion);
+    var li = crear_li_tag(_pelicula, _id, _descripcion, _imgPelicula);
     ul.appendChild(li);
     document.getElementById("root").appendChild(ul);
 }

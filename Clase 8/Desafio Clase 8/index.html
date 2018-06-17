@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Desafio - Clase 8</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+
+    <script src="js/app.js"></script>
+    <!--AGREGADO DE ESTILOS-->
+    <style>
+        ul{
+            list-style: none;
+        }
+        img {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <h1>Desafio - Clase 8</h1>
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Funcionamiento:</h4>
+                        <p>Al agregar peliculas usted puede visualizarlas de 3 maneras distintas haciendo uso de los botones de la derecha. </p>
+                        <p>Si clickea en "Mostrar todas las peliculas" visualizara TODAS las peliculas sin importar el orden</p>
+                        <p>Si clickea en "Mostrar A-Z" visualizara TODAS las peliculas en orden alfabetico ascendente</p>
+                        <p>Si clickea en "Mostrar Z-A" visualizara TODAS las peliculas en orden alfabetico descendente</p>
+                        <hr>
+                        <div class="alert alert-danger" role="alert">
+                            No se pueden cargar peliculas repetidas (que ya se encuentren cargadas previamente)... Automaticamente se le pedira cargar
+                            una nueva pelicula mediante un prompt
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+                <!--SECCION AGREGADO Y ELIMINADO DE PELICULAS-->
+                <div class="jumbotron col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <h3 class="text-center">Ingrese los datos</h3>
+                        <br>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h5>Id pelicula:</h5>
+                            <input type="text" class="form-control text-center" id="idPelicula" placeholder="Id pelicula">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h5>Título pelicula:</h5>
+                            <input type="text" class="form-control text-center" id="idTituloPelicula" placeholder="Título pelicula">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h5>Link pelicula:</h5>
+                            <input type="text" class="form-control text-center" id="idImagenPelicula" placeholder="Link pelicula">
+                            <span><sub>*Ingrese link de la pelicula que va a agregar.</sub></span>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="exampleFormControlTextarea1"><h5>Descripción pelicula:</h5></label>
+                            <textarea class="form-control" id="idDescripcionPelicula" rows="3"></textarea>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <br>
+                            <button type="button" onclick="generarPeliculas()" class="btn btn-success btn-md btn-block">Agregar pelicula <i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <br>
+                        <h3 class="text-center">Ingrese nombre de pelicula a eliminar:</h3>
+                        <br>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h5>Título pelicula:</h5>
+                            <input type="text" class="form-control text-center" id="idTituloPeliculaEliminar" placeholder="Título pelicula">
+                        </div>
+                    
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <br>
+                            <button type="button" onclick="eliminarPelicula()" class="btn btn-danger btn-md btn-block">Eliminar pelicula <i class="fas fa-exclamation-triangle"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!--FIN SECCION AGREGADO Y ELIMINADO DE PELICULAS-->
+
+                <!--SECCION MUESTREO DE PELICULAS-->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+                    <h3>Listado de peliculas:</h3>
+                    <!-- Button ALL MOVIES modal -->
+                    <button type="button" class="btn btn-info btn-md btn-block" onclick="mostrarTodasLasPeliculas()" data-toggle="modal" data-target="#allMovies">
+                         Mostrar todas las peliculas
+                        <i class="far fa-eye"></i>
+                    </button>
+                    
+                    <!-- Modal ALL MOVIES -->
+                    <div class="modal fade" id="allMovies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Peliculas:</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="rootAllMovies"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Button A-Z MOVIES modal -->
+                    <button type="button" class="btn btn-info btn-md btn-block" onclick="mostrarAZ()" data-toggle="modal" data-target="#modal-AZ">
+                        Mostrar A-Z
+                        <i class="far fa-eye"></i>
+                    </button>
+                    
+                    <!-- Modal Z-A MOVIES -->
+                    <div class="modal fade" id="modal-AZ" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Peliculas A-Z:</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="rootAZMovies"></div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Button Z-A MOVIES modal -->
+                    <button type="button" class="btn btn-info btn-md btn-block" onclick="mostrarZA()" data-toggle="modal" data-target="#modal-ZA">
+                         Mostrar Z-A
+                        <i class="far fa-eye"></i>
+                    </button>
+                    
+                    <!-- Modal Z-A MOVIES -->
+                    <div class="modal fade" id="modal-ZA" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Peliculas Z-A:</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="rootZAMovies"></div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <span>
+                        <sub>*LOS SIGUIENTES BOTONES DESPLIEGAN UN MODAL</sub>
+                    </span>
+                    
+
+                </div>
+                
+                <!--FIN SECCION MUESTREO DE PELICULAS-->
+
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
