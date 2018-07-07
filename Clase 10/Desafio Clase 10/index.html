@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Desafio - Clase 10</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="js/main.js"></script>
+    <style>
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body onload="main()">
+    <div class="container text-center">
+        <h1>ToDo List</h1>
+        <!--row tareas a cargar-->
+        <div class="row jumbotron">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="form-group">
+                    <label for="inputId">ID tarea</label>
+                    <input type="text" class="form-control" id="idTareaNuevo" placeholder="ID tarea">
+                </div>
+                <div class="form-group">
+                    <label for="inputTitulo">Titulo Tarea</label>
+                    <input type="text" class="form-control" id="idTituloNuevo" placeholder="Titulo tarea">
+                </div>
+                <div class="form-group">
+                    <label for="inputDescripcion">Descripcion Tarea</label>
+                    <input type="text" class="form-control" id="idDescripcionNuevo" placeholder="Descripción">
+                </div>
+                <button type="submit" class="btn btn-primary" id="idBotonAgregar">Agregar</button>
+            </div>
+        </div>
+
+        <!--row tareas cargadas-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <div class="jumbotron" id="root">
+                    <div id="inputModificar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
