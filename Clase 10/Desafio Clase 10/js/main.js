@@ -26,7 +26,7 @@ function mostrarTodasLasTareas(_id, _titulo, _descripcion) {
 }
 
 function crear_li_tag(_id, _titulo, _descripcion) {
-    var contenidoLi = "<h5>ID: " + _id + "</h5><span>Título tarea : " + _titulo + " " + "</span>" + "<p> Descripción: " + _descripcion + "</p><button type='submit' class='btn btn-success' id='idBotonModificar'>Modificar</button> <button type='submit' class='btn btn-danger' id='idBotonEliminar'>Eliminar</button>";
+    var contenidoLi = "<h5>ID: " + _id + "</h5><span>Título tarea : " + _titulo + " " + "</span>" + "<p> Descripción: " + _descripcion + "</p><button type='submit' class='btn btn-success' id='idBotonModificar'>Modificar</button> <button type='submit' class='btn btn-danger' id='idBotonEliminar'>Eliminar</button> <button type='submit' class='btn btn-warning' id='idBotonCompleatdo'>Completado</button>";
     var li = document.createElement("li");
     li.innerHTML = contenidoLi;
 
