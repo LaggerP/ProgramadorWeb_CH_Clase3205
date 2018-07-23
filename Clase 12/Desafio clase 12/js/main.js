@@ -8,37 +8,26 @@ $(document).ready(function(){
 
     //form code
     $('#btnIdAgregar').click(function(){
+        debugger;
         var _titulo = $("#tituloId").val();
         var _autor = $("#autorId").val();
         var _articulo = $("#articuloId").val();
         var _categoria = $("#categoriaId").val();
         var _linkImg = $("#imgId").val();
-        agregarNuevaCard(_titulo,_autor, _articulo, _categoria, _linkImg);
-        var nuevaCard ='<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 articulo"><div class="card mb-3"><img class="card-img-top" src="'+_linkImg+'" alt="Card image cap"><div class = "card-body"><h5 class="card-title">'+_titulo+' </h5><p class="card-text">'+_articulo+'</p><p class ="card-text"><small class="text-muted">Autor:'+_autor+'</small><p class="text">Deja tu comentario</p></p></div></div></div>';
+        var nuevaCard = '<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 articulo style="background:black;"><div class="card mb-3"><img class="card-img-top" src="' + _linkImg + '" alt="Card image cap"><div class = "card-body"><h5 class="card-title">' + _titulo + ' </h5><p class="card-text">' + _articulo + '</p><p class ="card-text"><small class="text-muted">Autor:' + _autor + '</small></br><button id="idbtnComentario" type="button" class="btn btn-link btn-sm">Dejar un comentario</button></p><div><h6>Comentarios:</h6><div id="TODOScomentarios"></div><div id="formComentarios" style="display:none"><div class="form-group"><label>Escriba comentario:</label><textarea class="form-control" id="comentarioId" rows="2"></textarea><br/><button type="button" id="btnAgregarComentario" class="btn btn-md btn-success btn-block">Agregar comentario</button></div></div></div></div></div></div>';
         $('#seccionCard').append(nuevaCard);
+        $('#idbtnComentario').click(function(){
+            $('#formComentarios').toggle(800);
+            $('#btnAgregarComentario').click(function () {
+                var _comentario = $('#comentarioId').val();
+                $('#TODOScomentarios').append('<br/>',_comentario);
+            });
+        });
     });
-    agregarNuevaCard(_titulo, _autor, _articulo, _categoria, _linkImg){
-
-    }
-
-    //create card with the information from form
-
-
+   
     //animation toggle form
     $('#btnNuevoArticulo').click(function(){
         debugger;
         $('#formNuevoArticulo').toggle(800);
     });
 });
-
-
-/**
- * 
-    <div class = "card mb-3" >
-        <img class="card-img-top" src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4c9c2def3becce37f2ff57b7c7454a11&auto=format&fit=crop&w=800&q=60" alt="Card image cap">
-        <div class ="card-body">
-        <h5 class="card-title"> Card title </h5> <p class="card-text"> This is a wider card with supporting text below as a natural lead - in to additional content.This content is a little bit longer. </p> <p class="card-text">
-        <small class = "text-muted" > Last updated 3 mins ago < /small> <small class = "text"> Deja tu comentario </small> </p> 
-        </div> 
-    </div>
- */
