@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Desafio clase 12</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script src="js/main.js"></script>
+  
+
+    <style>
+        body{
+            width: 100%;
+            overflow-x: hidden !important;
+            background-color: #efefef
+        }
+        .header-background{
+            min-width: 100%;
+            min-height: 400px;
+            background-image: url("https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjE2ODQ0fQ&s=137b2e38c254858884a2a4c1f99ebaca&auto=format&fit=crop&w=1650&q=80");
+            background-position:50% 40%;
+
+        }
+        .headerTitle{
+            color: white;
+        }
+        .headerTitleH1{ font-size: 70px; padding-top: 100px; }
+        .headerTitleH3{ font-size: 30px;  padding-top: 30px; }
+        
+
+        .div-articulos{
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header-background text-center">
+        <div class="headerTitle text-center">
+            <h1 class="headerTitleH1">Bienvenidos</h1>
+            <h3 class="headerTitleH3">Desafio - Blog</h3>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 div-articulos">
+        <h2>Últimos artículos:</h2>
+        <br>
+        <div class="row" id="seccionCard">
+            <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4c9c2def3becce37f2ff57b7c7454a11&auto=format&fit=crop&w=800&q=60"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a
+                            little bit longer.</p>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small class="text">Deja tu comentario</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="card mb-3">
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1520970014086-2208d157c9e2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6d13474751db29fc0be006b70ab81137&auto=format&fit=crop&w=800&q=60" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a
+                            little bit longer.</p>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="button" id="btnNuevoArticulo" class="btn btn-info btn-md btn-block">Agregar nuevo artículo</button>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="formNuevoArticulo" id="formNuevoArticulo" style="display:none">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Título artículo:</label>
+                            <input type="text" class="form-control" id="tituloId" placeholder="Título del artículo">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Escriba el artículo a continuación:</label>
+                            <textarea class="form-control" id="articuloId" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Seleccione categoría:</label>
+                            <select class="custom-select my-1 mr-sm-2" id="categoriaId">
+                                <option selected>Elige</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Link imagen:</label>
+                            <input type="text" class="form-control" id="imgId" placeholder="Pegue aquí el link de la imagen">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Autor:</label>
+                            <input type="text" class="form-control" id="autorId" placeholder="Nombre de autor del artículo">
+                        </div>
+                        <br>
+                        <button type="button" id="btnIdAgregar" class="btn btn-md btn-success btn-block">Info</button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</body>
+</html>
